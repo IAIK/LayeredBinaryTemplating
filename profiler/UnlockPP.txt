@@ -1,0 +1,740 @@
+Remove protected process protection
+------------------------------------
+
+1) Open WinDbg
+
+2) !process 0 0
+
+3) dt nt!_EPROCESS <address>
+	Inspect _EPROCESS at address
+4) eb <address of _EPROCESS>+0x6ca 0
+	Changes protection value
+	
+
+
+WARNING: Can not open process 104
+WARNING: Can not open process 352
+WARNING: Can not open process 440
+WARNING: Can not open process 516
+WARNING: Can not open process 532
+WARNING: Can not open process 664
+WARNING: Can not open process 2732
+WARNING: Can not open process 2740
+WARNING: Can not open process 4004
+WARNING: Can not open process 536
+
+**** NT ACTIVE PROCESS DUMP ****
+PROCESS ffff8607c04d8440
+    SessionId: none  Cid: 0004    Peb: 00000000  ParentCid: 0000
+    DirBase: 001aa000  ObjectTable: ffffab8a8d402200  HandleCount: 3082.
+    Image: System
+
+PROCESS ffff8607c0559040
+    SessionId: none  Cid: 0068    Peb: 00000000  ParentCid: 0004
+    DirBase: 3fe00000  ObjectTable: ffffab8a8d4262c0  HandleCount:   0.
+    Image: Registry
+
+PROCESS ffff8607c348e040
+    SessionId: none  Cid: 0164    Peb: 80c1fb6000  ParentCid: 0004
+    DirBase: 103200000  ObjectTable: ffffab8a8daa88c0  HandleCount:  52.
+    Image: smss.exe
+
+PROCESS ffff8607c34b7580
+    SessionId: 0  Cid: 01b8    Peb: 2809c57000  ParentCid: 01b0
+    DirBase: 08000000  ObjectTable: ffffab8a8e92d940  HandleCount: 435.
+    Image: csrss.exe
+
+PROCESS ffff8607c40f8080
+    SessionId: 0  Cid: 0204    Peb: b30bf06000  ParentCid: 01b0
+    DirBase: 0cb00000  ObjectTable: ffffab8a8dd5fe80  HandleCount: 155.
+    Image: wininit.exe
+
+PROCESS ffff8607c3f41080
+    SessionId: 1  Cid: 0210    Peb: ff1f814000  ParentCid: 01fc
+    DirBase: 0c200000  ObjectTable: ffffab8a8e9e2040  HandleCount: 512.
+    Image: csrss.exe
+
+PROCESS ffff8607c4038080
+    SessionId: 1  Cid: 0258    Peb: 8102663000  ParentCid: 01fc
+    DirBase: 0a300000  ObjectTable: ffffab8a8e9ebe00  HandleCount: 244.
+    Image: winlogon.exe
+
+PROCESS ffff8607c40fa080
+    SessionId: 0  Cid: 029c    Peb: dfa5ca7000  ParentCid: 0204
+    DirBase: 107900000  ObjectTable: ffffab8a8ea49840  HandleCount: 558.
+    Image: services.exe
+
+PROCESS ffff8607c4110080
+    SessionId: 0  Cid: 02a4    Peb: 372c688000  ParentCid: 0204
+    DirBase: 08700000  ObjectTable: ffffab8a8ea17a40  HandleCount: 1318.
+    Image: lsass.exe
+
+PROCESS ffff8607c41e2580
+    SessionId: 0  Cid: 0324    Peb: 81226fb000  ParentCid: 029c
+    DirBase: 02f50000  ObjectTable: ffffab8a8e93b040  HandleCount:  84.
+    Image: svchost.exe
+
+PROCESS ffff8607c41fe580
+    SessionId: 1  Cid: 033c    Peb: ef36038000  ParentCid: 0258
+    DirBase: 04990000  ObjectTable: ffffab8a8eaba200  HandleCount:  45.
+    Image: fontdrvhost.exe
+
+PROCESS ffff8607c4014580
+    SessionId: 0  Cid: 0340    Peb: ff590c6000  ParentCid: 0204
+    DirBase: 04590000  ObjectTable: ffffab8a8eafd040  HandleCount:  45.
+    Image: fontdrvhost.exe
+
+PROCESS ffff8607c23b0580
+    SessionId: 0  Cid: 0380    Peb: adcf5dd000  ParentCid: 029c
+    DirBase: 0ce10000  ObjectTable: ffffab8a8eb32480  HandleCount: 1014.
+    Image: svchost.exe
+
+PROCESS ffff8607c23f5340
+    SessionId: 0  Cid: 03b0    Peb: defd0b0000  ParentCid: 029c
+    DirBase: 09220000  ObjectTable: ffffab8a8ebae040  HandleCount: 1118.
+    Image: svchost.exe
+
+PROCESS ffff8607c41f8580
+    SessionId: 0  Cid: 03f0    Peb: 33ce684000  ParentCid: 029c
+    DirBase: 0b800000  ObjectTable: ffffab8a8e955680  HandleCount: 276.
+    Image: svchost.exe
+
+PROCESS ffff8607c44ab080
+    SessionId: 1  Cid: 016c    Peb: f9c283d000  ParentCid: 0258
+    DirBase: 0c600000  ObjectTable: ffffab8a8ec7c200  HandleCount: 809.
+    Image: dwm.exe
+
+PROCESS ffff8607c41f0580
+    SessionId: 0  Cid: 041c    Peb: 56c9a33000  ParentCid: 029c
+    DirBase: 0f720000  ObjectTable: ffffab8a8ec65bc0  HandleCount: 367.
+    Image: svchost.exe
+
+PROCESS ffff8607c41ee580
+    SessionId: 0  Cid: 0460    Peb: b847f1a000  ParentCid: 029c
+    DirBase: 0db00000  ObjectTable: ffffab8a8ed1fe80  HandleCount: 238.
+    Image: svchost.exe
+
+PROCESS ffff8607c41ec580
+    SessionId: 0  Cid: 0468    Peb: 62fa982000  ParentCid: 029c
+    DirBase: 0c150000  ObjectTable: ffffab8a8ec44e80  HandleCount: 183.
+    Image: svchost.exe
+
+PROCESS ffff8607c41ea580
+    SessionId: 0  Cid: 04c0    Peb: 4358608000  ParentCid: 029c
+    DirBase: 1d850000  ObjectTable: ffffab8a8ea72040  HandleCount: 228.
+    Image: svchost.exe
+
+PROCESS ffff8607c41e4580
+    SessionId: 0  Cid: 0508    Peb: 006ab000  ParentCid: 029c
+    DirBase: 11560000  ObjectTable: ffffab8a8ed92040  HandleCount: 202.
+    Image: VBoxService.exe
+
+PROCESS ffff8607c455d580
+    SessionId: 0  Cid: 053c    Peb: 19dc74e000  ParentCid: 029c
+    DirBase: 11850000  ObjectTable: ffffab8a8ed58a00  HandleCount: 198.
+    Image: svchost.exe
+
+PROCESS ffff8607c455f580
+    SessionId: 0  Cid: 0544    Peb: fc4dc09000  ParentCid: 029c
+    DirBase: 11860000  ObjectTable: ffffab8a8ec67780  HandleCount: 205.
+    Image: svchost.exe
+
+PROCESS ffff8607c45e9580
+    SessionId: 0  Cid: 0584    Peb: 228ac10000  ParentCid: 029c
+    DirBase: 0d930000  ObjectTable: ffffab8a8eda4800  HandleCount: 467.
+    Image: svchost.exe
+
+PROCESS ffff8607c45ec580
+    SessionId: 0  Cid: 058c    Peb: 22177d000  ParentCid: 029c
+    DirBase: 0d940000  ObjectTable: ffffab8a8edd0a00  HandleCount: 171.
+    Image: svchost.exe
+
+PROCESS ffff8607c45f0580
+    SessionId: 0  Cid: 0594    Peb: 8e1437a000  ParentCid: 029c
+    DirBase: 0d8e0000  ObjectTable: ffffab8a8edbaac0  HandleCount: 389.
+    Image: svchost.exe
+
+PROCESS ffff8607c45f2580
+    SessionId: 0  Cid: 059c    Peb: 4f8e78f000  ParentCid: 029c
+    DirBase: 0d9e0000  ObjectTable: ffffab8a8edd2540  HandleCount: 151.
+    Image: svchost.exe
+
+PROCESS ffff8607c45f4580
+    SessionId: 0  Cid: 05a8    Peb: 6cf13e2000  ParentCid: 029c
+    DirBase: 0fc00000  ObjectTable: ffffab8a8ed4ee80  HandleCount: 157.
+    Image: svchost.exe
+
+PROCESS ffff8607c45f9580
+    SessionId: 0  Cid: 060c    Peb: 5de1d51000  ParentCid: 029c
+    DirBase: 0e080000  ObjectTable: ffffab8a8eddf940  HandleCount: 162.
+    Image: svchost.exe
+
+PROCESS ffff8607c4645580
+    SessionId: 0  Cid: 0624    Peb: c89b043000  ParentCid: 029c
+    DirBase: 0e340000  ObjectTable: ffffab8a8eb838c0  HandleCount: 176.
+    Image: svchost.exe
+
+PROCESS ffff8607c4643580
+    SessionId: 0  Cid: 0628    Peb: b73f054000  ParentCid: 029c
+    DirBase: 0e250000  ObjectTable: ffffab8a8ede48c0  HandleCount: 150.
+    Image: svchost.exe
+
+PROCESS ffff8607c4677580
+    SessionId: 0  Cid: 067c    Peb: 8e2fecd000  ParentCid: 029c
+    DirBase: 13150000  ObjectTable: ffffab8a8ec29b00  HandleCount: 313.
+    Image: svchost.exe
+
+PROCESS ffff8607c4689580
+    SessionId: 0  Cid: 06b8    Peb: f217918000  ParentCid: 029c
+    DirBase: 0f840000  ObjectTable: ffffab8a8ecdfa40  HandleCount: 174.
+    Image: svchost.exe
+
+PROCESS ffff8607c46b9400
+    SessionId: 0  Cid: 06e0    Peb: 7471f27000  ParentCid: 029c
+    DirBase: 10000000  ObjectTable: ffffab8a8eb68e80  HandleCount: 130.
+    Image: svchost.exe
+
+PROCESS ffff8607c46bc580
+    SessionId: 0  Cid: 06e8    Peb: 620a5d4000  ParentCid: 029c
+    DirBase: 10010000  ObjectTable: ffffab8a8edee840  HandleCount: 127.
+    Image: svchost.exe
+
+PROCESS ffff8607c46c0580
+    SessionId: 0  Cid: 0714    Peb: 467094f000  ParentCid: 029c
+    DirBase: 10340000  ObjectTable: ffffab8a8eeafe80  HandleCount: 230.
+    Image: svchost.exe
+
+PROCESS ffff8607c46df580
+    SessionId: 0  Cid: 071c    Peb: f738b55000  ParentCid: 029c
+    DirBase: 10350000  ObjectTable: ffffab8a8ee9f440  HandleCount: 210.
+    Image: svchost.exe
+
+PROCESS ffff8607c46e1300
+    SessionId: 0  Cid: 0724    Peb: 3b940c9000  ParentCid: 029c
+    DirBase: 10290000  ObjectTable: ffffab8a8ee9f740  HandleCount: 300.
+    Image: svchost.exe
+
+PROCESS ffff8607c4702580
+    SessionId: 0  Cid: 0790    Peb: 3cf56fe000  ParentCid: 029c
+    DirBase: 15200000  ObjectTable: ffffab8a8eed33c0  HandleCount: 167.
+    Image: svchost.exe
+
+PROCESS ffff8607c47a3580
+    SessionId: 0  Cid: 0404    Peb: 010fd000  ParentCid: 029c
+    DirBase: 11a00000  ObjectTable: ffffab8a8eebcbc0  HandleCount: 411.
+    Image: spoolsv.exe
+
+PROCESS ffff8607c47d1580
+    SessionId: 0  Cid: 078c    Peb: cd14d0c000  ParentCid: 029c
+    DirBase: 12400000  ObjectTable: ffffab8a8ef5cb40  HandleCount: 181.
+    Image: svchost.exe
+
+PROCESS ffff8607c47d3580
+    SessionId: 0  Cid: 0108    Peb: 6eaaac000  ParentCid: 029c
+    DirBase: 125d0000  ObjectTable: ffffab8a8ee98c40  HandleCount: 172.
+    Image: svchost.exe
+
+PROCESS ffff8607c47d5580
+    SessionId: 0  Cid: 0858    Peb: 9d898cd000  ParentCid: 029c
+    DirBase: 14d40000  ObjectTable: ffffab8a8ef08c40  HandleCount: 186.
+    Image: svchost.exe
+
+PROCESS ffff8607c4808580
+    SessionId: 0  Cid: 08b0    Peb: 1acbdc4000  ParentCid: 029c
+    DirBase: 13600000  ObjectTable: ffffab8a8eb8dbc0  HandleCount: 258.
+    Image: svchost.exe
+
+PROCESS ffff8607c34e2580
+    SessionId: 0  Cid: 091c    Peb: a721a3c000  ParentCid: 029c
+    DirBase: 14500000  ObjectTable: ffffab8a8f07a6c0  HandleCount: 337.
+    Image: svchost.exe
+
+PROCESS ffff8607c4821580
+    SessionId: 0  Cid: 0924    Peb: 607147b000  ParentCid: 029c
+    DirBase: 14410000  ObjectTable: ffffab8a8f070e80  HandleCount: 338.
+    Image: svchost.exe
+
+PROCESS ffff8607c487c580
+    SessionId: 0  Cid: 0938    Peb: eb2b8c2000  ParentCid: 029c
+    DirBase: 14700000  ObjectTable: ffffab8a8efeddc0  HandleCount: 122.
+    Image: svchost.exe
+
+PROCESS ffff8607c4a08580
+    SessionId: 0  Cid: 0940    Peb: b2362cc000  ParentCid: 029c
+    DirBase: 14800000  ObjectTable: ffffab8a8f07b840  HandleCount: 125.
+    Image: svchost.exe
+
+PROCESS ffff8607c4a06580
+    SessionId: 0  Cid: 0948    Peb: dd7e873000  ParentCid: 029c
+    DirBase: 14860000  ObjectTable: ffffab8a8efe3380  HandleCount: 518.
+    Image: svchost.exe
+
+PROCESS ffff8607c4941580
+    SessionId: 0  Cid: 0958    Peb: b6eab2b000  ParentCid: 029c
+    DirBase: 18e10000  ObjectTable: ffffab8a8f058bc0  HandleCount: 353.
+    Image: SecurityHealthService.exe
+
+PROCESS ffff8607c494e580
+    SessionId: 0  Cid: 0964    Peb: 9e32221000  ParentCid: 029c
+    DirBase: 14f30000  ObjectTable: ffffab8a8ef3e900  HandleCount: 336.
+    Image: svchost.exe
+
+PROCESS ffff8607c494c580
+    SessionId: 0  Cid: 096c    Peb: 5a09060000  ParentCid: 029c
+    DirBase: 14e00000  ObjectTable: ffffab8a8f07b040  HandleCount: 592.
+    Image: MsMpEng.exe
+
+PROCESS ffff8607c4961580
+    SessionId: 0  Cid: 0974    Peb: 4a83aff000  ParentCid: 029c
+    DirBase: 14f60000  ObjectTable: ffffab8a8f030480  HandleCount: 367.
+    Image: svchost.exe
+
+PROCESS ffff8607c49ec540
+    SessionId: 0  Cid: 0a50    Peb: 4e6ec1a000  ParentCid: 029c
+    DirBase: 15ae0000  ObjectTable: ffffab8a8ef21700  HandleCount: 132.
+    Image: svchost.exe
+
+PROCESS ffff8607c49ea580
+    SessionId: 0  Cid: 0aa4    Peb: 1bc42d4000  ParentCid: 029c
+    DirBase: 121e0000  ObjectTable: ffffab8a8f0ecc00  HandleCount: 341.
+    Image: svchost.exe
+
+PROCESS ffff8607c4851580
+    SessionId: 0  Cid: 0b04    Peb: e9d4767000  ParentCid: 029c
+    DirBase: 19230000  ObjectTable: ffffab8a8f0ede00  HandleCount: 347.
+    Image: svchost.exe
+
+PROCESS ffff8607c48c5580
+    SessionId: 0  Cid: 0b64    Peb: f1cc65c000  ParentCid: 029c
+    DirBase: 17c10000  ObjectTable: ffffab8a8f117c40  HandleCount: 198.
+    Image: svchost.exe
+
+PROCESS ffff8607c48e81c0
+    SessionId: 0  Cid: 0b90    Peb: 8f9b9ef000  ParentCid: 029c
+    DirBase: 143c0000  ObjectTable: ffffab8a8f1dfa80  HandleCount: 359.
+    Image: svchost.exe
+
+PROCESS ffff8607c48ca580
+    SessionId: 0  Cid: 0bb0    Peb: 83574d3000  ParentCid: 029c
+    DirBase: 18a40000  ObjectTable: ffffab8a8f165600  HandleCount: 443.
+    Image: svchost.exe
+
+PROCESS ffff8607c41b6580
+    SessionId: 0  Cid: 0f58    Peb: ccd35b7000  ParentCid: 029c
+    DirBase: 4d9e0000  ObjectTable: ffffab8a8f764700  HandleCount: 266.
+    Image: svchost.exe
+
+PROCESS ffff8607c4c38580
+    SessionId: 0  Cid: 0fcc    Peb: ec8294c000  ParentCid: 029c
+    DirBase: 29800000  ObjectTable: ffffab8a8f8a5300  HandleCount: 321.
+    Image: svchost.exe
+
+PROCESS ffff8607c4ccc580
+    SessionId: 1  Cid: 0fb0    Peb: fb2262b000  ParentCid: 04c0
+    DirBase: 32400000  ObjectTable: ffffab8a8f632dc0  HandleCount: 597.
+    Image: sihost.exe
+
+PROCESS ffff8607c4cbe580
+    SessionId: 1  Cid: 1008    Peb: 6f8c70d000  ParentCid: 029c
+    DirBase: 32420000  ObjectTable: ffffab8a8fa7a040  HandleCount: 255.
+    Image: svchost.exe
+
+PROCESS ffff8607c4cf9580
+    SessionId: 1  Cid: 1034    Peb: d600fbd000  ParentCid: 029c
+    DirBase: 38d40000  ObjectTable: ffffab8a8f93f680  HandleCount: 436.
+    Image: svchost.exe
+
+PROCESS ffff8607c4d15580
+    SessionId: 1  Cid: 1094    Peb: 584e42000  ParentCid: 041c
+    DirBase: 26100000  ObjectTable: ffffab8a8fad4180  HandleCount: 323.
+    Image: taskhostw.exe
+
+PROCESS ffff8607c4d59580
+    SessionId: 0  Cid: 110c    Peb: 4b74b2f000  ParentCid: 029c
+    DirBase: 33a00000  ObjectTable: ffffab8a8fafd280  HandleCount: 159.
+    Image: svchost.exe
+
+PROCESS ffff8607c4d77580
+    SessionId: 1  Cid: 1140    Peb: a6abb4b000  ParentCid: 110c
+    DirBase: 2db20000  ObjectTable: ffffab8a8fb09780  HandleCount: 398.
+    Image: ctfmon.exe
+
+PROCESS ffff8607c4da8580
+    SessionId: 0  Cid: 11dc    Peb: 15639c1000  ParentCid: 029c
+    DirBase: 3b200000  ObjectTable: ffffab8a8fc41e80  HandleCount: 235.
+    Image: svchost.exe
+
+PROCESS ffff8607c4e3c580
+    SessionId: 0  Cid: 1238    Peb: 5fb818a000  ParentCid: 029c
+    DirBase: 38830000  ObjectTable: ffffab8a8fc6fbc0  HandleCount: 273.
+    Image: svchost.exe
+
+PROCESS ffff8607c4e4b580
+    SessionId: 1  Cid: 1258    Peb: fab201d000  ParentCid: 0258
+    DirBase: 3d000000  ObjectTable: 00000000  HandleCount:   0.
+    Image: userinit.exe
+
+PROCESS ffff8607c4e52580
+    SessionId: 1  Cid: 1278    Peb: 00b59000  ParentCid: 1258
+    DirBase: 3d410000  ObjectTable: ffffab8a8fcb0e80  HandleCount: 2075.
+    Image: explorer.exe
+
+PROCESS ffff8607c4b18580
+    SessionId: 0  Cid: 1314    Peb: 8f903b000  ParentCid: 029c
+    DirBase: 108800000  ObjectTable: ffffab8a8fb36780  HandleCount: 166.
+    Image: NisSrv.exe
+
+PROCESS ffff8607c4fb3380
+    SessionId: 1  Cid: 11b0    Peb: 351f0ad000  ParentCid: 0380
+DeepFreeze
+    DirBase: 42b10000  ObjectTable: ffffab8a8feddd40  HandleCount: 867.
+    Image: ShellExperienceHost.exe
+
+PROCESS ffff8607c06dc580
+    SessionId: 1  Cid: 1464    Peb: 9ad65ca000  ParentCid: 0380
+    DirBase: 3c130000  ObjectTable: ffffab8a8ff7c740  HandleCount: 216.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c502e580
+    SessionId: 1  Cid: 148c    Peb: c8480cd000  ParentCid: 0380
+DeepFreeze
+    DirBase: 44c50000  ObjectTable: ffffab8a8ff7e540  HandleCount: 1396.
+    Image: SearchUI.exe
+
+PROCESS ffff8607c5084580
+    SessionId: 1  Cid: 1528    Peb: f90f887000  ParentCid: 0380
+    DirBase: 41120000  ObjectTable: ffffab8a90050080  HandleCount: 540.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c5120580
+    SessionId: 1  Cid: 1584    Peb: d343223000  ParentCid: 0380
+    DirBase: 42000000  ObjectTable: ffffab8a8fe5d040  HandleCount: 543.
+    Image: ApplicationFrameHost.exe
+
+PROCESS ffff8607c5284080
+    SessionId: 1  Cid: 16f0    Peb: d4c7b90000  ParentCid: 0380
+DeepFreeze
+    DirBase: 42610000  ObjectTable: ffffab8a8f1ea4c0  HandleCount: 906.
+    Image: MicrosoftEdge.exe
+
+PROCESS ffff8607c52c84c0
+    SessionId: 1  Cid: 1750    Peb: 69947f6000  ParentCid: 0380
+    DirBase: 44820000  ObjectTable: ffffab8a9025b040  HandleCount: 160.
+    Image: browser_broker.exe
+
+PROCESS ffff8607c52f8080
+    SessionId: 0  Cid: 1784    Peb: 176c525000  ParentCid: 029c
+    DirBase: 44500000  ObjectTable: ffffab8a901f3c80  HandleCount: 140.
+    Image: svchost.exe
+
+PROCESS ffff8607c533c580
+    SessionId: 1  Cid: 13a0    Peb: bde7eb2000  ParentCid: 0380
+    DirBase: 44e00000  ObjectTable: ffffab8a90221e80  HandleCount: 212.
+    Image: dllhost.exe
+
+PROCESS ffff8607c53c2080
+    SessionId: 0  Cid: 0ee0    Peb: 2d70d39000  ParentCid: 1784
+    DirBase: 49b90000  ObjectTable: ffffab8a903a0e80  HandleCount:  98.
+    Image: Windows.WARP.JITService.exe
+
+PROCESS ffff8607c5361580
+    SessionId: 1  Cid: 1494    Peb: 813ffc0000  ParentCid: 0380
+    DirBase: 4ea00000  ObjectTable: ffffab8a902d7d80  HandleCount: 141.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c5452080
+    SessionId: 1  Cid: 1804    Peb: e640913000  ParentCid: 0380
+DeepFreeze
+    DirBase: 47000000  ObjectTable: ffffab8a9028e140  HandleCount: 514.
+    Image: MicrosoftEdgeCP.exe
+
+PROCESS ffff8607c5434080
+    SessionId: 1  Cid: 180c    Peb: 65a500f000  ParentCid: 0380
+DeepFreeze
+    DirBase: 47040000  ObjectTable: ffffab8a9048a700  HandleCount: 399.
+    Image: MicrosoftEdgeCP.exe
+
+PROCESS ffff8607c524a580
+    SessionId: 1  Cid: 1a2c    Peb: 1bdbbe9000  ParentCid: 0380
+    DirBase: 4d500000  ObjectTable: ffffab8a906a2c40  HandleCount: 493.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c540b580
+    SessionId: 0  Cid: 1b80    Peb: 98a859d000  ParentCid: 029c
+    DirBase: 104d00000  ObjectTable: ffffab8a90886300  HandleCount: 758.
+    Image: SearchIndexer.exe
+
+PROCESS ffff8607c540e580
+    SessionId: 1  Cid: 05b0    Peb: 2600496000  ParentCid: 1278
+    DirBase: 50050000  ObjectTable: ffffab8a9087dcc0  HandleCount: 153.
+    Image: MSASCuiL.exe
+
+PROCESS ffff8607c54f4580
+    SessionId: 1  Cid: 06f0    Peb: 009d4000  ParentCid: 1278
+    DirBase: 50f00000  ObjectTable: ffffab8a8f6197c0  HandleCount: 239.
+    Image: VBoxTray.exe
+
+PROCESS ffff8607c5559580
+    SessionId: 1  Cid: 17fc    Peb: 73f7644000  ParentCid: 1278
+    DirBase: 4f380000  ObjectTable: ffffab8a903cc8c0  HandleCount: 623.
+    Image: OneDrive.exe
+
+PROCESS ffff8607c55cc580
+    SessionId: 1  Cid: 143c    Peb: 5fcfd19000  ParentCid: 0380
+    DirBase: 52000000  ObjectTable: ffffab8a906c5e80  HandleCount: 238.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c4b49580
+    SessionId: 1  Cid: 02e8    Peb: 74f84dd000  ParentCid: 029c
+    DirBase: 115700000  ObjectTable: ffffab8a90ca8bc0  HandleCount: 505.
+    Image: svchost.exe
+
+PROCESS ffff8607c3fa8300
+    SessionId: 0  Cid: 169c    Peb: bd7b0a2000  ParentCid: 029c
+    DirBase: 115d00000  ObjectTable: ffffab8a8f8a8980  HandleCount:  65.
+    Image: SgrmBroker.exe
+
+PROCESS ffff8607c0863580
+    SessionId: 0  Cid: 1230    Peb: 67fef33000  ParentCid: 029c
+    DirBase: 116ba0000  ObjectTable: ffffab8a914597c0  HandleCount: 195.
+    Image: svchost.exe
+
+PROCESS ffff8607c47f3580
+    SessionId: 1  Cid: 08b8    Peb: 1181d55000  ParentCid: 0380
+DeepFreeze
+    DirBase: 110600000  ObjectTable: ffffab8a913c4e80  HandleCount: 1080.
+    Image: WinStore.App.exe
+
+PROCESS ffff8607c55ac580
+    SessionId: 1  Cid: 0c8c    Peb: 864d05d000  ParentCid: 0380
+    DirBase: 112f00000  ObjectTable: ffffab8a90de0580  HandleCount: 193.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c50f4080
+    SessionId: 0  Cid: 1480    Peb: 5edb057000  ParentCid: 029c
+    DirBase: 59800000  ObjectTable: ffffab8a90697780  HandleCount: 357.
+    Image: svchost.exe
+
+PROCESS ffff8607c087e340
+    SessionId: 0  Cid: 14c0    Peb: 5310af000  ParentCid: 029c
+    DirBase: 58530000  ObjectTable: 00000000  HandleCount:   0.
+    Image: svchost.exe
+
+PROCESS ffff8607c0857580
+    SessionId: 1  Cid: 0cec    Peb: 260e619000  ParentCid: 0380
+DeepFreeze
+    DirBase: 45300000  ObjectTable: ffffab8a90d33e80  HandleCount: 921.
+    Image: HxOutlook.exe
+
+PROCESS ffff8607c10f7580
+    SessionId: 1  Cid: 0a5c    Peb: 6155ab9000  ParentCid: 0380
+    DirBase: 59f00000  ObjectTable: ffffab8a8febb540  HandleCount: 541.
+    Image: HxTsr.exe
+
+PROCESS ffff8607c1060580
+    SessionId: 1  Cid: 1694    Peb: 140424b000  ParentCid: 0380
+    DirBase: 69b00000  ObjectTable: ffffab8a91841040  HandleCount: 561.
+    Image: HxAccounts.exe
+
+PROCESS ffff8607c0539080
+    SessionId: 1  Cid: 0b74    Peb: e2d42d4000  ParentCid: 0380
+DeepFreeze
+    DirBase: 43d00000  ObjectTable: ffffab8a9185c880  HandleCount: 732.
+    Image: SystemSettings.exe
+
+PROCESS ffff8607c1fdb580
+    SessionId: 1  Cid: 1b40    Peb: 5d67578000  ParentCid: 0380
+    DirBase: 5d800000  ObjectTable: 00000000  HandleCount:   0.
+    Image: backgroundTaskHost.exe
+
+PROCESS ffff8607c41f2580
+    SessionId: 1  Cid: 10c4    Peb: d744e20000  ParentCid: 1278
+    DirBase: 0e800000  ObjectTable: ffffab8a8f8d5b80  HandleCount: 831.
+    Image: Code.exe
+
+PROCESS ffff8607c104e080
+    SessionId: 0  Cid: 1660    Peb: 6db6f7a000  ParentCid: 029c
+    DirBase: 0f300000  ObjectTable: ffffab8a91b87480  HandleCount: 188.
+    Image: svchost.exe
+
+PROCESS ffff8607c4b11580
+    SessionId: 1  Cid: 1b50    Peb: 39ee06f000  ParentCid: 10c4
+    DirBase: 60900000  ObjectTable: ffffab8a917ebe80  HandleCount: 223.
+    Image: Code.exe
+
+PROCESS ffff8607c3a7a080
+    SessionId: 1  Cid: 0fb8    Peb: 70eaf53000  ParentCid: 10c4
+    DirBase: 54d10000  ObjectTable: ffffab8a91772040  HandleCount: 279.
+    Image: Code.exe
+
+PROCESS ffff8607c5115080
+    SessionId: 0  Cid: 074c    Peb: 82d8af7000  ParentCid: 029c
+    DirBase: 56e00000  ObjectTable: ffffab8a91d8d5c0  HandleCount: 128.
+    Image: svchost.exe
+
+PROCESS ffff8607c3d02440
+    SessionId: 1  Cid: 16b8    Peb: 3290631000  ParentCid: 10c4
+    DirBase: 66200000  ObjectTable: ffffab8a91db6040  HandleCount: 287.
+    Image: Code.exe
+
+PROCESS ffff8607c3761580
+    SessionId: 1  Cid: 12b0    Peb: ec53f46000  ParentCid: 10c4
+    DirBase: 6f100000  ObjectTable: ffffab8a91b62400  HandleCount: 443.
+    Image: Code.exe
+
+PROCESS ffff8607c3a60080
+    SessionId: 1  Cid: 08cc    Peb: 3466c80000  ParentCid: 12b0
+    DirBase: 76000000  ObjectTable: ffffab8a91bf6900  HandleCount: 278.
+    Image: Code.exe
+
+PROCESS ffff8607c3a86580
+    SessionId: 1  Cid: 0af8    Peb: 4980d10000  ParentCid: 10c4
+    DirBase: 79800000  ObjectTable: ffffab8a91f06580  HandleCount: 354.
+    Image: Code.exe
+
+PROCESS ffff8607c20cb080
+    SessionId: 1  Cid: 0bd8    Peb: 790aea9000  ParentCid: 0af8
+    DirBase: 87700000  ObjectTable: ffffab8a91eade00  HandleCount: 187.
+    Image: Code.exe
+
+PROCESS ffff8607c3bed080
+    SessionId: 1  Cid: 18d0    Peb: 00617000  ParentCid: 12b0
+    DirBase: 7a230000  ObjectTable: ffffab8a920391c0  HandleCount: 307.
+    Image: CodeHelper.exe
+
+PROCESS ffff8607c3c77580
+    SessionId: 1  Cid: 0ba0    Peb: 4c42471000  ParentCid: 18d0
+    DirBase: 7e500000  ObjectTable: ffffab8a92137480  HandleCount: 118.
+    Image: conhost.exe
+
+PROCESS ffff8607c10d9080
+    SessionId: 1  Cid: 1458    Peb: 2aa6bb000  ParentCid: 0380
+    DirBase: 76f00000  ObjectTable: ffffab8a9176e3c0  HandleCount: 542.
+    Image: smartscreen.exe
+
+PROCESS ffff8607c3d9f440
+    SessionId: 1  Cid: 1630    Peb: e3dc0e4000  ParentCid: 1278
+    DirBase: 6d400000  ObjectTable: ffffab8a91e99bc0  HandleCount: 653.
+    Image: powershell.exe
+
+PROCESS ffff8607c20b8080
+    SessionId: 1  Cid: 16d0    Peb: 12b745a000  ParentCid: 1630
+    DirBase: 7c300000  ObjectTable: ffffab8a9073da40  HandleCount: 244.
+    Image: conhost.exe
+
+PROCESS ffff8607c08fc080
+    SessionId: 1  Cid: 103c    Peb: 310a75000  ParentCid: 1278
+    DirBase: 82900000  ObjectTable: ffffab8a92628e80  HandleCount: 246.
+    Image: notepad.exe
+
+PROCESS ffff8607c3ccd080
+    SessionId: 1  Cid: 13ac    Peb: a2cb269000  ParentCid: 1278
+    DirBase: 67b00000  ObjectTable: 00000000  HandleCount:   0.
+    Image: windbg.exe
+
+PROCESS ffff8607c3d41580
+    SessionId: 0  Cid: 09b0    Peb: 2d4c483000  ParentCid: 067c
+    DirBase: 87f00000  ObjectTable: ffffab8a92239e80  HandleCount: 163.
+    Image: audiodg.exe
+
+PROCESS ffff8607c1fef440
+    SessionId: 1  Cid: 1774    Peb: e46033f000  ParentCid: 1278
+    DirBase: 65300000  ObjectTable: 00000000  HandleCount:   0.
+    Image: windbg.exe
+
+PROCESS ffff8607c202b580
+    SessionId: 1  Cid: 1558    Peb: 4f1aafa000  ParentCid: 1278
+    DirBase: 8da00000  ObjectTable: 00000000  HandleCount:   0.
+    Image: windbg.exe
+
+PROCESS ffff8607c3d06580
+    SessionId: 1  Cid: 0f84    Peb: 7fc922a000  ParentCid: 1278
+    DirBase: 98b00000  ObjectTable: ffffab8a92634900  HandleCount: 620.
+    Image: Taskmgr.exe
+
+PROCESS ffff8607c3eb7580
+    SessionId: 1  Cid: 1958    Peb: 86eeb62000  ParentCid: 1a2c
+    DirBase: 91a00000  ObjectTable: ffffab8a92b58c80  HandleCount: 660.
+    Image: powershell.exe
+
+PROCESS ffff8607c086b580
+    SessionId: 1  Cid: 16a8    Peb: 6009cf2000  ParentCid: 1958
+    DirBase: 81f00000  ObjectTable: ffffab8a92bc9e80  HandleCount: 239.
+    Image: conhost.exe
+
+PROCESS ffff8607c3f68580
+    SessionId: 1  Cid: 199c    Peb: 00367000  ParentCid: 10c4
+    DirBase: 8f500000  ObjectTable: ffffab8a92b25e80  HandleCount: 163.
+    Image: CodeSetup-stable-7f6ab5485bbc008386c4386d08766667e155244e.exe
+
+PROCESS ffff8607c424a580
+    SessionId: 1  Cid: 0564    Peb: 00295000  ParentCid: 199c
+    DirBase: a4400000  ObjectTable: ffffab8a92aea3c0  HandleCount: 281.
+    Image: CodeSetup-stable-7f6ab5485bbc008386c4386d08766667e155244e.tmp
+
+PROCESS ffff8607c4221580
+    SessionId: 0  Cid: 0c28    Peb: 4421fef000  ParentCid: 029c
+    DirBase: 8b900000  ObjectTable: ffffab8a93820380  HandleCount: 175.
+    Image: svchost.exe
+
+PROCESS ffff8607c2027580
+    SessionId: 1  Cid: 1bc4    Peb: ee3f282000  ParentCid: 1278
+    DirBase: bdb00000  ObjectTable: ffffab8a926cd780  HandleCount: 512.
+    Image: notepad.exe
+
+PROCESS ffff8607c4280580
+    SessionId: 1  Cid: 0e9c    Peb: b90eb3a000  ParentCid: 1278
+    DirBase: 99a00000  ObjectTable: 00000000  HandleCount:   0.
+    Image: notepad.exe
+
+PROCESS ffff8607c3aeb340
+    SessionId: 0  Cid: 11b4    Peb: 8cc002b000  ParentCid: 029c
+    DirBase: 92f00000  ObjectTable: ffffab8a92b219c0  HandleCount: 115.
+    Image: svchost.exe
+
+PROCESS ffff8607c54c1280
+    SessionId: 1  Cid: 0e3c    Peb: d0f9ade000  ParentCid: 1b80
+    DirBase: a6500000  ObjectTable: ffffab8a937ac540  HandleCount: 262.
+    Image: SearchProtocolHost.exe
+
+PROCESS ffff8607c0ab3580
+    SessionId: 0  Cid: 0828    Peb: 3a92cf0000  ParentCid: 029c
+    DirBase: b6f00000  ObjectTable: ffffab8a926b8800  HandleCount: 134.
+    Image: svchost.exe
+
+PROCESS ffff8607c1cbb080
+    SessionId: 1  Cid: 1408    Peb: f1ae4cd000  ParentCid: 0380
+DeepFreeze
+    DirBase: 69700000  ObjectTable: ffffab8a92d31400  HandleCount: 310.
+    Image: backgroundTaskHost.exe
+
+PROCESS ffff8607c3e54080
+    SessionId: 1  Cid: 1a90    Peb: 91e82bb000  ParentCid: 0380
+DeepFreeze
+    DirBase: a5900000  ObjectTable: ffffab8a92a03780  HandleCount: 294.
+    Image: backgroundTaskHost.exe
+
+PROCESS ffff8607c0aa7580
+    SessionId: 0  Cid: 0f40    Peb: f3f0f13000  ParentCid: 029c
+    DirBase: bb300000  ObjectTable: ffffab8a938ad780  HandleCount: 122.
+    Image: svchost.exe
+
+PROCESS ffff8607c0acc580
+    SessionId: 1  Cid: 055c    Peb: 2edd3f0000  ParentCid: 0380
+    DirBase: bd610000  ObjectTable: ffffab8a939bbe80  HandleCount: 139.
+    Image: RuntimeBroker.exe
+
+PROCESS ffff8607c0a23580
+    SessionId: 1  Cid: 1d0c    Peb: 9c5e9e9000  ParentCid: 1278
+    DirBase: c0600000  ObjectTable: ffffab8a9377c200  HandleCount: 271.
+    Image: windbg.exe
+
+PROCESS ffff8607c0a2b580
+    SessionId: 0  Cid: 1db8    Peb: 7d6acc6000  ParentCid: 1b80
+    DirBase: b4200000  ObjectTable: ffffab8a92b38500  HandleCount: 363.
+    Image: SearchProtocolHost.exe
+
+PROCESS ffff8607c3f71580
+    SessionId: 0  Cid: 1df4    Peb: b398388000  ParentCid: 1b80
+    DirBase: 61800000  ObjectTable: ffffab8a9274b780  HandleCount: 135.
+    Image: SearchFilterHost.exe

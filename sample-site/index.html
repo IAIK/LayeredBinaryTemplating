@@ -1,0 +1,15 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title> Test </title>
+
+</head>
+<body>
+
+<!-- ignore TAB key, do not move out of focus -->
+<input type="password" onkeydown="if(event.keyCode === 9){ return false; }"> </input>
+<br>
+<textarea onkeydown="if(event.keyCode === 9){ return false; }"> </textarea>
+
+</body>
+</html> 

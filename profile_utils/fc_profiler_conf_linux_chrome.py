@@ -12,6 +12,12 @@ FILE_BLACKLIST_REGEX = [
 FILE_PAGE_BLACKLIST = {
 } 
 
+
+FILE_WHITELIST_REGEX = [
+    r"/opt/google/chrome/chrome"
+]
+
+
 # wait a bit after a event was triggered to allow all accesses to happen
 # we do not want to wait too long as this might slow down the attack 
 WAIT_AFTER_EVENT_S = 0.025
